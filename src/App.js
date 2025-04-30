@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import Sidebar from './components/Sidebar';
 
+import { AnimatePresence, motion } from "framer-motion";
+
 function App() {
   const [cart, setCart] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -48,13 +50,36 @@ function App() {
         <h1 className="text-2xl font-bold mb-4">Prodotti in evidenza</h1>
         <ProductList onAddToCart={handleAddToCart} />
       </main>
-      {isSidebarOpen && (
-        <Sidebar
-          cart={cart}
-          toggleSidebar={toggleSidebar}
-          onChangeQuantity={handleChangeQuantity}
-        />
-      )}
+
+      <AnimatePresence>
+          {isSidebarOpen && (
+            <>
+              {/* Overlay animato */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black z-40"
+                onClick={toggleSidebar}
+              />
+
+              {/* Sidebar animato (già incluso nel componente Sidebar) */}
+              <motion.div
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'tween', duration: 0.3 }}
+                className="fixed top-0 right-0 w-80 h-full bg-white shadow-lg z-50"
+              >
+                <Sidebar
+                  cart={cart}
+                  toggleSidebar={toggleSidebar}
+                  onChangeQuantity={handleChangeQuantity}
+                />
+              </motion.div>
+            </>
+          )}
+      </AnimatePresence>
     </div>
   );
 }
