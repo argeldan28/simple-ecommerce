@@ -16,7 +16,7 @@ export default function ProductModal({ product, onClose }) {
         />
         <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
         <p className="text-gray-700 mb-4">Prezzo: €{product.price}</p>
-        <p className="text-gray-500">Descrizione del prodotto...</p>
+        <p className="text-gray-500">{product.description}</p>
       </div>
     </div>
   );

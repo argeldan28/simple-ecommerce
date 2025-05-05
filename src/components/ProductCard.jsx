@@ -14,7 +14,10 @@ export default function ProductCard({ product, onAddToCart, onClick }) {
         <h3 className="text-lg font-semibold">{product.name}</h3>
         <p className="text-gray-600">€{product.price}</p>
         <button
-          onClick={() => onAddToCart(product)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onAddToCart(product);
+          }}
           className="mt-auto bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded">
           Aggiungi
         </button>
