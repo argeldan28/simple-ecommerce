@@ -26,19 +26,16 @@ function App() {
   }
 
   function toggleSidebar() {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen((prevSidebarOpen) => !prevSidebarOpen);
   }
 
   function handleChangeQuantity(productId, change) {
     setCart((prevCart) => {
-      // Trova il prodotto da aggiornare
       const updatedCart = prevCart.map((product) =>
         product.id === productId
           ? { ...product, quantity: product.quantity + change }
           : product
       );
-  
-      // Rimuove i prodotti con quantità <= 0
       return updatedCart.filter((product) => product.quantity > 0);
     });
   }

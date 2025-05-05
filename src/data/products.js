@@ -16,6 +16,24 @@ const products = [
       name: "Tazza da sviluppatore",
       price: 14.99,
       image: "https://i.etsystatic.com/19639181/r/il/a550cf/2601409584/il_fullxfull.2601409584_bw44.jpg"
+    },
+    {
+      id: 3,
+      name: "Tazza da sviluppatore",
+      price: 14.99,
+      image: "https://i.etsystatic.com/19639181/r/il/a550cf/2601409584/il_fullxfull.2601409584_bw44.jpg"
+    },
+    {
+      id: 3,
+      name: "Tazza da sviluppatore",
+      price: 14.99,
+      image: "https://i.etsystatic.com/19639181/r/il/a550cf/2601409584/il_fullxfull.2601409584_bw44.jpg"
+    },
+    {
+      id: 3,
+      name: "Tazza da sviluppatore",
+      price: 14.99,
+      image: "https://i.etsystatic.com/19639181/r/il/a550cf/2601409584/il_fullxfull.2601409584_bw44.jpg"
     }
   ];
   
