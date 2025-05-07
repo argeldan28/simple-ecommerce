@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar cart={cart} toggleSidebar={toggleSidebar} />
-      <main className="p-4">
+      <main className="pt-20 p-4 -z-0">
         <h1 className="text-2xl font-bold mb-4">Prodotti in evidenza</h1>
         <ProductList onAddToCart={handleAddToCart} />
       </main>
@@ -51,7 +51,6 @@ function App() {
       <AnimatePresence>
           {isSidebarOpen && (
             <>
-              {/* Overlay animato */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.5 }}
@@ -59,8 +58,6 @@ function App() {
                 className="fixed inset-0 bg-black z-40"
                 onClick={toggleSidebar}
               />
-
-              {/* Sidebar animato (già incluso nel componente Sidebar) */}
               <motion.div
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
