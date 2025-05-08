@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { BsCart4 } from "react-icons/bs";
+
 
 export default function Navbar({ cart, toggleSidebar }) {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -27,13 +29,18 @@ export default function Navbar({ cart, toggleSidebar }) {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <h2 className="text-xl font-bold">E-Shop</h2>
+      <h2 className="text-xl font-bold">DevShop</h2>
       <button
         onClick={toggleSidebar}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
+        className="bg-blue-500 text-white px-4 py-2 rounded inline-flex items-center gap-1"
       >
-        Carrello ({totalQuantity})
+        <BsCart4 /> 
+        <span className="w-5 h-5 flex items-center justify-center rounded-full text-white text-xs bg-gray-800">
+          {totalQuantity}
+        </span>
+
       </button>
+
     </nav>
   );
 }

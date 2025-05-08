@@ -1,14 +1,16 @@
+import { IoMdClose } from "react-icons/io";
+
 export default function Sidebar({ cart, toggleSidebar, onChangeQuantity }) {
     return (
-        <div className="fixed top-0 right-0 w-80 bg-white h-full shadow-lg p-4 z-50">
+        <div className="fixed top-0 right-0 w-80 bg-white h-full shadow-lg p-4 pt-12 z-50">
 
-            <h2 className="text-xl font-semibold mb-4">Carrello</h2>
             <button
 							className="text-xl absolute top-4 right-4"
 							onClick={toggleSidebar}
             >
-            X
+            <IoMdClose size={30} />
             </button>
+						<h2 className="text-3xl font-semibold mb-4">Carrello</h2>
             {cart.length === 0 ? 
 							(
 								<p>Il carrello è vuoto</p>

@@ -5,6 +5,7 @@ import ProductList from './components/ProductList';
 import Sidebar from './components/Sidebar';
 
 import { AnimatePresence, motion } from "framer-motion";
+import Footer from './components/Footer';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -43,7 +44,18 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar cart={cart} toggleSidebar={toggleSidebar} />
-      <main className="pt-20 p-4 -z-0">
+      <main className="pt-20 p-4">
+        <div className="relative my-10 max-w-[90vw] mx-auto">
+          <img 
+            className="w-full max-h-[70vh] h-auto object-cover" 
+            src="homepage-image.webp" 
+            alt="Immagine della homepage" 
+          />
+          <p className="absolute inset-0 text-7xl text-white text-center font-bold font-serif flex items-center justify-center bg-black bg-opacity-50">
+            Shopping a portata delle mani
+          </p>
+        </div>
+
         <h1 className="text-2xl font-bold mb-4">Prodotti in evidenza</h1>
         <ProductList onAddToCart={handleAddToCart} />
       </main>
@@ -74,6 +86,7 @@ function App() {
             </>
           )}
       </AnimatePresence>
+      <Footer />
     </div>
   );
 }
