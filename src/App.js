@@ -47,13 +47,18 @@ function App() {
       <main className="pt-20 p-4">
         <div className="relative my-10 max-w-[90vw] mx-auto">
           <img 
-            className="w-full max-h-[70vh] h-auto object-cover" 
+            className="w-full max-h-[70vh] h-auto object-cover brightness-50" 
             src="homepage-image.webp" 
             alt="Immagine della homepage" 
           />
-          <p className="absolute inset-0 text-7xl text-white text-center font-bold font-serif flex items-center justify-center bg-black bg-opacity-50">
-            Shopping a portata delle mani
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 capitalize text-7xl text-white text-center font-bold font-serif flex items-center justify-center"
+          >
+            Shopping a portata di mano
+          </motion.p>
         </div>
 
         <h1 className="text-2xl font-bold mb-4">Prodotti in evidenza</h1>
