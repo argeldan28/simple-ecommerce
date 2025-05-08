@@ -52,13 +52,14 @@ function App() {
             alt="Immagine della homepage" 
           />
           <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 capitalize text-7xl text-white text-center font-bold font-serif flex items-center justify-center"
-          >
-            Shopping a portata di mano
-          </motion.p>
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+  className="absolute inset-0 capitalize text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white text-center font-bold font-serif flex items-center justify-center"
+>
+  Shopping a portata di mano
+</motion.p>
+
         </div>
 
         <h1 className="text-2xl font-bold mb-4">Prodotti in evidenza</h1>
