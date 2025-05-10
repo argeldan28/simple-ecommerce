@@ -1,7 +1,12 @@
 import { IoMdClose } from "react-icons/io";
 
 export default function Sidebar({ cart, toggleSidebar, onChangeQuantity }) {
-    return (
+    
+	const totalPrice = cart.reduce((sum, product) =>
+		sum + product.price * product.quantity,0
+	).toFixed(2);
+	
+	return (
         <div className="fixed top-0 right-0 w-80 bg-white h-full shadow-lg p-4 pt-12 z-50">
 
             <button
@@ -45,6 +50,11 @@ export default function Sidebar({ cart, toggleSidebar, onChangeQuantity }) {
             	)
 						}
             <div className="mt-4">
+
+						<div>
+							<h3 className="text-lg font-semibold mb-4">Prezzo totale: {totalPrice}</h3>
+						</div>
+
             <button
 							className={`py-2 px-4 rounded w-full text-white ${
 								cart.length === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
