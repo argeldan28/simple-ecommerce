@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import Sidebar from './components/Sidebar';
+import ServiceCard from './components/ServiceCard';
 
 import { AnimatePresence, motion } from "framer-motion";
 import Footer from './components/Footer';
@@ -44,8 +45,8 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar cart={cart} toggleSidebar={toggleSidebar} />
-      <main className="pt-20 p-4">
-        <div className="relative my-10 max-w-[90vw] mx-auto">
+      <main>
+        <div className="relative my-10 max-w-[100vw] mx-auto">
           <img 
             className="w-full max-h-[70vh] h-auto object-cover brightness-50" 
             src="homepage-image.webp" 
@@ -61,9 +62,35 @@ function App() {
           </motion.p>
 
         </div>
+        
+
+
 
         <h1 className="text-2xl font-bold mb-4 sm:pl-6 md:pl-8 xl:pl-12">Prodotti in evidenza</h1>
         <ProductList onAddToCart={handleAddToCart} />
+
+
+
+
+        <h2 className="text-2xl font-bold mt-12 mb-5 sm:pl-6 md:pl-8 xl:pl-12">I nostri Servizi</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-20 md:px-8 xl:px-12">
+          <ServiceCard
+            icon="🚚"
+            title="Spedizione Veloce"
+            description="Consegna rapida in 24/48 ore in tutta Italia."
+          />
+          <ServiceCard
+            icon="💳"
+            title="Pagamenti Sicuri"
+            description="Tutti i pagamenti sono protetti e criptati."
+          />
+          <ServiceCard
+            icon="📞"
+            title="Supporto Clienti"
+            description="Assistenza dedicata 7 giorni su 7 via chat o telefono."
+          />
+        </div>
+
       </main>
 
       <AnimatePresence>

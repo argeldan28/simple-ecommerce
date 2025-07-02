@@ -7,7 +7,7 @@ export default function ProductList({ onAddToCart }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 5;
+  const itemsPerPage = 4;
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -15,7 +15,7 @@ export default function ProductList({ onAddToCart }) {
 
   return (
     <div className="container mx-auto px-12">
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6 justify-items-center items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center items-center">
 
         {currentItems.map((product) => (
           <ProductCard
