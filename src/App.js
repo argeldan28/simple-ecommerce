@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useRef} from 'react';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import Sidebar from './components/Sidebar';
@@ -14,7 +14,7 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [notification, setNotification] = useState("");
   const [notificationType, setNotificationType] = useState("success");
-
+  const timeoutRef = useRef(null);
 
   function handleAddToCart(product) {
     const existingProduct = cart.find((item) => item.id === product.id);
@@ -60,9 +60,17 @@ function App() {
   function showNotification(message, type = "success") {
     setNotification(message);
     setNotificationType(type);
-    setTimeout(() => {
+    
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current); // cancella timeout precedente
+    }
+
+    timeoutRef.current = setTimeout(() => {
       setNotification("");
+      timeoutRef.current = null;
+      // console.log(timeoutRef);
     }, 2000);
+    // console.log(timeoutRef);
   }
 
   return (

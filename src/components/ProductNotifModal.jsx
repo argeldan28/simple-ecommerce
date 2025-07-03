@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ProductNotifModal({ message, onClose, type }){
   
   const bgColor = type === "success"
-    ? "bg-green-100 border-green-300 text-green-700"
-    : "bg-red-100 border-red-300 text-red-700"
+    ? "bg-green-200 border-green-300 text-green-700"
+    : "bg-red-200 border-red-300 text-red-700"
 
   return(
     <AnimatePresence>
