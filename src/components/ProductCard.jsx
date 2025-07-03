@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ProductCard({ product, onAddToCart, onClick }) {
   return (
     <div onClick={onClick} className="bg-stone-200 rounded-lg shadow-md overflow-hidden w-full max-w-xs flex flex-col cursor-pointer">
@@ -15,7 +13,7 @@ export default function ProductCard({ product, onAddToCart, onClick }) {
         <p className="text-gray-600">€{product.price}</p>
         <button
           onClick={(e) => {
-            e.stopPropagation();
+            e.stopPropagation(); //serve a evitare che si apra la scheda dettagliata del prodotto quando clicchi sul bottone “Aggiungi”
             onAddToCart(product);
           }}
           className="mt-auto bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded">

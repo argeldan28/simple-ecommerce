@@ -5,21 +5,28 @@ import { BsCart4 } from "react-icons/bs";
 export default function Navbar({ cart, toggleSidebar }) {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const scrollThreshold = 100; // soglia minima di scroll per far partire l’azione
 
   const totalQuantity = cart.reduce((acc, product) => acc + product.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
+      const currentScrollY = window.scrollY;
+      const diff = currentScrollY - lastScrollY;
+
+      if (Math.abs(diff) > scrollThreshold) {
+        console.log('lastScrollY :' + lastScrollY);
+        console.log('currentScrollY :' + currentScrollY);
+        if (diff > 0) {
+          setShowNavbar(false);
+        } else {
+          setShowNavbar(true);
+        }
+        setLastScrollY(currentScrollY);
       }
-      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 

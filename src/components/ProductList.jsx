@@ -15,7 +15,7 @@ export default function ProductList({ onAddToCart }) {
 
   return (
     <div className="container mx-auto px-12">
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center items-center">
 
         {currentItems.map((product) => (
           <ProductCard

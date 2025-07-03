@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import Sidebar from './components/Sidebar';
 import ServiceCard from './components/ServiceCard';
+import ProductNotifModal from './components/ProductNotifModal';
 
 import { AnimatePresence, motion } from "framer-motion";
 import Footer from './components/Footer';
@@ -11,6 +12,9 @@ import Footer from './components/Footer';
 function App() {
   const [cart, setCart] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [notification, setNotification] = useState("");
+  const [notificationType, setNotificationType] = useState("success");
+
 
   function handleAddToCart(product) {
     const existingProduct = cart.find((item) => item.id === product.id);
@@ -25,6 +29,7 @@ function App() {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
+    showNotification(`${product.name} aggiunto al carrello`)
   }
 
   function toggleSidebar() {
@@ -38,8 +43,26 @@ function App() {
           ? { ...product, quantity: product.quantity + change }
           : product
       );
-      return updatedCart.filter((product) => product.quantity > 0);
+
+      const finalCart = updatedCart.filter((product) => product.quantity > 0);
+
+      const changedProduct = cart.find((p) => p.id === productId);
+      if (changedProduct) {
+        const action = change > 0 ? "aggiunto" : "rimosso";
+        const type = change > 0 ? "success" : "error"
+        showNotification(`${changedProduct.name} ${action} dal carrello`, type)
+      }
+
+      return finalCart;
     });
+  }
+
+  function showNotification(message, type = "success") {
+    setNotification(message);
+    setNotificationType(type);
+    setTimeout(() => {
+      setNotification("");
+    }, 2000);
   }
 
   return (
@@ -66,14 +89,14 @@ function App() {
 
 
 
-        <h1 className="text-2xl font-bold mb-4 sm:pl-6 md:pl-8 xl:pl-12">Prodotti in evidenza</h1>
+        <h1 className="text-2xl font-bold mb-4 pl-3 sm:pl-6 md:pl-8 xl:pl-12">Prodotti in evidenza</h1>
         <ProductList onAddToCart={handleAddToCart} />
 
 
 
 
-        <h2 className="text-2xl font-bold mt-12 mb-5 sm:pl-6 md:pl-8 xl:pl-12">I nostri Servizi</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-20 md:px-8 xl:px-12">
+        <h2 className="text-2xl font-bold mt-12 mb-5 pl-3 sm:pl-6 md:pl-8 xl:pl-12">I nostri Servizi</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-10 md:px-8 xl:px-12">
           <ServiceCard
             icon="🚚"
             title="Spedizione Veloce"
@@ -119,6 +142,13 @@ function App() {
             </>
           )}
       </AnimatePresence>
+
+      <ProductNotifModal 
+        message={notification}
+        type={notificationType}
+        onClose={() => setNotification("")}
+      />
+
       <Footer />
     </div>
   );

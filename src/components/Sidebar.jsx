@@ -18,7 +18,11 @@ export default function Sidebar({ cart, toggleSidebar, onChangeQuantity }) {
 						<h2 className="text-3xl font-semibold mb-4">Carrello</h2>
             {cart.length === 0 ? 
 							(
-								<p>Il carrello è vuoto</p>
+								<div className="text-center mt-10 text-gray-500">
+									<div className="text-5xl mb-2">😢</div>
+									<h3 className="text-lg font-semibold">Il tuo carrello è vuoto</h3>
+    							<p className="text-sm mt-1">Aggiungi qualcosa per iniziare lo shopping!</p>
+								</div>
 							) 
 								: 
 							(
